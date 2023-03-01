@@ -1,0 +1,56 @@
+	Engligh tier test
+--------------------------------------------
+a1 level
+	3 words to next level
+		rand()%4 ถ้าได้ 0 ก็จะได้ มีให้สำหรับทุกเลเวล
+			คำศัพท์ พิเศษ(คำศัพท์จะไม่นับรวม 3คำที่ต้องผ่านในแต่ละเลเวล) ที่ถ้าตอบได้จะrandom ไอเทมมาใช้ในข้อถัดไป
+a2 level
+	
+b1 level
+
+b2 level
+
+c1 level
+
+c2 level
+
+each tier have 20 words 
+for random 3 words to pass that tier
+
+item
+	hint for each words
+	 -ใบ้คำศัพท์(คำแปล)
+ 	-ใบ้ตัวสะกด (aeiou)
+	 -ใบ้ตัวแรก / ตัวหลัง
+ 	-โล่ป้องกัน ไม่ให้วาดแขนวาดขาเพิ่ม เกมนึงใช้ ได้ 1 สิทธิ
+
+เก็บข้อมูลผู้เล่น ที่ฉลาดๆ
+	-fstream
+
+each level give different announce 
+a1 you are noob 
+a2 you are btter gj
+b1 nice you are tewsudlho
+b2 great
+c1 excellent
+c2 u are the best but u below me 
+
+switch case 5 ส่วน (หัว /คอ / แขน/ ลำตัว/ ขา)
+---------------------------------------------------
+  l			 }
+  l			 }
+  l                                ___
+  l                               l_l_l__
+  l                             ( -_-*)
+  l		          _ l _
+  l 		       /	 l    \       
+  l		     /	 l      \ 
+  l 			 l
+  l		           /? \
+  l                              /       \
+  l                           _/           \_
+  l  
+  l
+  l
+ ____________________________________________________
+
