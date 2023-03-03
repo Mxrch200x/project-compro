@@ -1,0 +1,133 @@
+A1
+1. grandparent
+2. fantastic
+3. geography
+4. hospital
+5. football
+6. newspaper
+7. midnight
+8. policeman
+9. money
+10. swimming
+11. sandwich
+12. umbrella
+13. wednesday
+14. spring
+15. onion
+16. theatre
+17. sciencetist
+18. november
+19. museaum
+20. journey
+
+A2
+1. accident
+2. architect
+3. basketball
+4. chemistry
+5. error
+6. female
+7. furniture
+8. headache
+9. insect
+10. laptop
+11. lemon
+12. motorcycle
+13. novel
+14. petrol
+15. physics
+16. researcher
+17. silver
+18. stomach
+19. virus
+20. vehicle
+
+B1 
+1. alcohol
+2. captain
+3. bride
+4. coach
+5. earthquake
+6. emotion
+7. fitness
+8. ghost
+9. horror
+10. knock
+11. magic
+12. market
+13. nieghbourhood
+14. path
+15. poison
+16. robot
+17. statue
+18. treatment
+19. upset
+20. weapon
+
+B2 
+1. address
+2. bacteria
+3. breast
+4. cancer
+5. engage
+6. heaven
+7. inch
+8. justice
+9. minister
+10. rhythm
+11. shelter
+12. surgery
+13. wealth
+14. vitamin
+15. organ
+16. mission
+17. lung
+18. bullet
+19. citizen
+20. nightmare
+
+C1
+1. absence
+2. cabinet
+3. battlefield
+4. endeavor
+5. horizon
+6. funeral
+7. grave (the place for dead person)
+8. hazard
+9. kidnap
+10. landlord
+11. lesbian
+12. mercy
+13. principal
+14. residence
+15. revenge
+16. sacrifice
+17. suicide
+18. trophy
+19. warrior
+20. pulse
+
+C2 (ไม่มีคำศัพท์แบบเป็นทางการในเว็บของoxford)
+1. misfortune
+2. maiden
+3. smite
+4. fortune
+5. hermit 
+6. paradox
+7. introvert
+8. pandemic
+9. spectrum
+10. parody
+11. apex
+12. cliche
+13. horrified
+14. hurl
+15. weep
+16. vow
+17. pale
+18. liaison
+19. alms
+20. cohabit
+
+
