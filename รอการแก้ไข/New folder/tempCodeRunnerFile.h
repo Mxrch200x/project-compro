@@ -1,0 +1,14 @@
+string name;
+    string type;
+    int level;
+    string wordforguess;
+    string wordfile;
+    string textline;
+    string wordlist[126] = {};
+    ifstream source;
+    int tries;
+    char Guess;
+    string tier[6];
+    bool CorrectGuess;
+    int randNum;
+    int k;
