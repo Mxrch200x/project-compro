@@ -93,7 +93,7 @@ C1
 4. endeavor
 5. horizon
 6. funeral
-7. grave (the place for dead person)
+7. graveyard (the place for dead person)
 8. hazard
 9. kidnap
 10. landlord
