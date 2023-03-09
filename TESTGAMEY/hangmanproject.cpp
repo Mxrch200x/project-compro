@@ -7,7 +7,7 @@ int main(){
 
     string name;    
     getline(cin,name);
-    Unit START(name, "word.txt");
+    Unit START(name, "word.txt", "hint1.txt", "hint2.txt");
     system("CLS");
 
     START.welcome();

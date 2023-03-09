@@ -12,9 +12,15 @@ class Unit{
     string type;
     int level;
     string wordforguess;
+    string hint1forguess;
+    string hint2forguess;
     string wordfile;
+    string hint1file;
+    string hint2file;
     string textline;
     string wordlist[126] = {};
+    string hint1list[126] = {};
+    string hint2list[126] = {};
     ifstream source;
     int tries;
     char Guess;
@@ -23,8 +29,9 @@ class Unit{
     int k;
     int score;
     bool Protect;
+    int Hint;
   public:
-    Unit(string ,string );
+    Unit(string ,string ,string ,string );
     void welcome();
     void updatehangmanlevel();
     void ReadWord();
@@ -33,15 +40,18 @@ class Unit{
     void test();
 };
 
-Unit::Unit(string n ,string filename){
+Unit::Unit(string n ,string filename ,string hint1 ,string hint2){
   name = n;
   wordfile = filename;
+  hint1file = hint1;
+  hint2file = hint2;
   type = "START";
   tries = 6;
   CorrectGuess = false;
   k = 0;
   level = 0;
   score = 0;
+  Hint = 0;
 }
 
 //โชว์ตอนเริ่ม
@@ -70,8 +80,12 @@ void showfirst(){
 
 //แสดงหลังจากใส่ชื่อเสร็จ
 void Unit::welcome(){
+  cout<<"\n\n==================================================\n\n" ;
+  cout<<"##################################################\n\n" ;
   cout<<"==================================================\n\n" ;
-  cout<<"# "<<"WELCOME > "<< name <<" < FOR OUR GAME #\n\n" ;
+  cout<<"  # "<<"WELCOME > "<< name <<" < FOR OUR GAME #\n\n" ;
+  cout<<"==================================================\n\n" ;
+  cout<<"##################################################\n\n" ;
   cout<<"==================================================" ;
   Sleep(4000);
   system("CLS");
@@ -197,13 +211,27 @@ void Unit::updatehangmanlevel(){
     }
 }
 
-//อ่านไฟล์word.txt
+//อ่านไฟล์word.txt hint1.txt hint2.txt
 void Unit::ReadWord(){
   source.open(wordfile);
   int i=0;                           
   while(getline(source,textline)){
     wordlist[i]=textline;
     i++;
+  }
+  source.close();
+  source.open(hint1file);
+  int j=0;                           
+  while(getline(source,textline)){
+    hint1list[j]=textline;
+    j++;
+  }
+  source.close();
+  source.open(hint2file);
+  int l=0;                           
+  while(getline(source,textline)){
+    hint2list[l]=textline;
+    l++;
   }
   source.close();
 }
@@ -240,10 +268,13 @@ void Unit::STARTGAME(){
 
     randNum = rand()%20;
     wordforguess = wordlist[randNum+k];
+    hint1forguess = hint1list[randNum+k];
+    hint2forguess = hint2list[randNum+k];
+
     string MysteryWord(wordforguess.length(),'_');
     while(tries >= 0){
       if(true){
-        cout << level ;
+        cout << level << " " << Hint;
         cout << endl << wordforguess << endl;
         SWITCHK();
         updatehangmanlevel();
@@ -254,7 +285,11 @@ void Unit::STARTGAME(){
         cout<<" This word are in level "<< tier[level/3];
         cout<<"  >> "<<level%3+1<<"/3 to next level"<<endl;
         cout<<"The word you have to guess is : "<<"\n\n";
-        cout<<MysteryWord<<"    meaning: "<<"something to hint"<<endl;
+        cout<<MysteryWord<< endl;
+
+        cout << "\nmeaning: "<<hint1forguess <<endl;
+        if(Hint >= 2) cout << "         "<<hint2forguess <<endl;
+
         cout<<"\nThere are " << MysteryWord.length() <<" letter in the word\n";
         cout<< "You have "<<tries <<" guess left\n";
         cout<<"Guess a letter : ";
@@ -275,6 +310,7 @@ void Unit::STARTGAME(){
 
         // เช็คว่าที่รับมาผิดไหม แล้วบอกว่าผิด
         if(CorrectGuess==false){
+          Hint++;
           tries--;
           cout<<"Sorry, :> "<<Guess<<" <: is not part of the word" << endl;
           Sleep(1000);
@@ -291,7 +327,7 @@ void Unit::STARTGAME(){
 
         // ถ้าถูกทุกคำแล้วก็เปลี่ยน
         if(wordforguess==MysteryWord){
-
+          Hint = 0;
           //เพิ่ม score
           if(tier[level/3] == "A1") score += 10 ;
           else if(tier[level/3] == "A2") score += 20 ;
@@ -300,7 +336,7 @@ void Unit::STARTGAME(){
           else if(tier[level/3] == "C1") score += 50 ;
           else if(tier[level/3] == "C2") score += 60 ;
 
-          cout<<"______________________________________________________________________"<<endl<<endl;
+          cout<<"\n\n______________________________________________________________________"<<endl<<endl;
           cout<<"______________________________________________________________________"<<endl<<endl;
           cout<<"______________________________________________________________________"<<endl<<endl;
           cout<<"   ::Congratulation ! You've got the word correct: >> "<<MysteryWord<<" <<"<<endl;
