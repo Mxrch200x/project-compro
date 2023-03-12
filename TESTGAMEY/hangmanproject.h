@@ -28,7 +28,7 @@ class Unit{
     int randNum;
     int k;
     int score;
-    bool Protect;
+    int Protect;
     int Hint;
   public:
     Unit(string ,string ,string ,string );
@@ -37,7 +37,8 @@ class Unit{
     void ReadWord();
     void SWITCHK();
     void STARTGAME();
-    void test();
+    void addProtect();
+    void random();
 };
 
 Unit::Unit(string n ,string filename ,string hint1 ,string hint2){
@@ -52,6 +53,7 @@ Unit::Unit(string n ,string filename ,string hint1 ,string hint2){
   level = 0;
   score = 0;
   Hint = 0;
+  Protect = 0 ;
 }
 
 //โชว์ตอนเริ่ม
@@ -83,7 +85,7 @@ void Unit::welcome(){
   cout<<"\n\n==================================================\n\n" ;
   cout<<"##################################################\n\n" ;
   cout<<"==================================================\n\n" ;
-  cout<<"  # "<<"WELCOME > "<< name <<" < FOR OUR GAME #\n\n" ;
+  cout<<"   # "<<"WELCOME > "<< name <<" < TO OUR GAME #\n\n" ;
   cout<<"==================================================\n\n" ;
   cout<<"##################################################\n\n" ;
   cout<<"==================================================" ;
@@ -93,12 +95,10 @@ void Unit::welcome(){
 
 //อัพเดทตัว hangman
 void Unit::updatehangmanlevel(){
-  string A;
-  A = (Protect) ? "Have" : "Not have" ;
   if(tries==6){
       cout<<"\n--------------------------------------------------"<<endl;     //15x50
       cout<<"l                                                 "<< "\t\tScore = " << score << endl;
-      cout<<"l                                                 "<< "\t\tProtect = " << A << endl;
+      cout<<"l                                                 "<< "\t\tProtect = " << Protect << endl;
       cout<<"l                                                 "<<endl;
       cout<<"l                                                 "<<endl;
       cout<<"l                                                 "<<endl;
@@ -114,7 +114,7 @@ void Unit::updatehangmanlevel(){
     }else if(tries==5){
       cout<<"\n--------------------------------------------------"<<endl;     //15x50
       cout<<"l                        }                        "<< "\t\tScore = " << score << endl;
-      cout<<"l                                                 "<< "\t\tProtect = " << A << endl;
+      cout<<"l                                                 "<< "\t\tProtect = " << Protect << endl;
       cout<<"l                                                 "<<endl;
       cout<<"l                                                 "<<endl;
       cout<<"l                                                 "<<endl;
@@ -130,7 +130,7 @@ void Unit::updatehangmanlevel(){
     }else if(tries==4){
       cout<<"\n--------------------------------------------------"<<endl;     //15x50
       cout<<"l                      __}__                      "<< "\t\tScore = " << score << endl;
-      cout<<"l                      l_l_l__                    "<< "\t\tProtect = " << A << endl;
+      cout<<"l                      l_l_l__                    "<< "\t\tProtect = " << Protect << endl;
       cout<<"l                     ( *.* )                     "<<endl;
       cout<<"l                                                 "<<endl;
       cout<<"l                                                 "<<endl;
@@ -146,7 +146,7 @@ void Unit::updatehangmanlevel(){
     }else if(tries==3){
       cout<<"\n--------------------------------------------------"<<endl;     //15x50
       cout<<"l                      __}__                      "<< "\t\tScore = " << score << endl;
-      cout<<"l                      l_l_l__                    "<< "\t\tProtect = " << A << endl;
+      cout<<"l                      l_l_l__                    "<< "\t\tProtect = " << Protect << endl;
       cout<<"l                     ( *.* )                     "<<endl;
       cout<<"l                        l                        "<<endl;
       cout<<"l                        l                        "<<endl;
@@ -162,7 +162,7 @@ void Unit::updatehangmanlevel(){
     }else if(tries==2){
       cout<<"\n--------------------------------------------------"<<endl;     //15x50 
       cout<<"l                      __}__                      "<< "\t\tScore = " << score << endl;
-      cout<<"l                      l_l_l__                    "<< "\t\tProtect = " << A << endl;
+      cout<<"l                      l_l_l__                    "<< "\t\tProtect = " << Protect << endl;
       cout<<"l                     ( *.* )                     "<<endl;
       cout<<"l                       _l_                       "<<endl;
       cout<<"l                     /  l  \\                    "<<endl;
@@ -178,7 +178,7 @@ void Unit::updatehangmanlevel(){
     }else if(tries==1){
       cout<<"\n--------------------------------------------------"<<endl;     //15x50
       cout<<"l                      __}__                      "<< "\t\tScore = " << score << endl;
-      cout<<"l                      l_l_l__                    "<< "\t\tProtect = " << A << endl;
+      cout<<"l                      l_l_l__                    "<< "\t\tProtect = " << Protect << endl;
       cout<<"l                     ( *.* )                     "<<endl;
       cout<<"l                       _l_                       "<<endl;
       cout<<"l                     /  l  \\                    "<<endl;
@@ -190,7 +190,7 @@ void Unit::updatehangmanlevel(){
       cout<<"l                                                 "<<endl;
       cout<<"l                                                 "<<endl;
       cout<<"__________________________________________________"<<endl;
-    }else{
+    }else if(tries == 0){
       cout<<"\n**************************************************"<<endl;
       cout<<"                   GAME OVER!!"<<endl;
       cout<<"**************************************************"<<endl;
@@ -236,37 +236,61 @@ void Unit::ReadWord(){
   source.close();
 }
 
+//ช่วงการสุ่มคำ
 void Unit::SWITCHK(){
-  if(level < 2){
-    k = 20 * (level/3) + 1 ;
-  }else if(level < 5){
-    k = 20 * (level/3) + 2 ;
-  }else if(level == 8){
-    k = 20 * (level/3) + 3 ;
-  }else if(level == 11){
-    k = 20 * (level/3) + 4 ;
-  }else if(level == 14){
-    k = 20 * (level/3) + 5 ;
-  }else if(level == 17){
-    k = 20 * (level/3) + 6 ;
-  }
+  if(level == 0) k = 1;
+  if(level == 1) k = 8;
+  if(level == 2) k = 15;
+  if(level == 3) k = 22;
+  if(level == 4) k = 29;
+  if(level == 5) k = 36;
+  if(level == 6) k = 43;
+  if(level == 7) k = 50;
+  if(level == 8) k = 57;
+  if(level == 9) k = 64;
+  if(level == 10) k = 71;
+  if(level == 11) k = 78;
+  if(level == 12) k = 85;
+  if(level == 13) k = 92;
+  if(level == 14) k = 99;
+  if(level == 15) k = 106;
+  if(level == 16) k = 113;
+  if(level == 17) k = 120;
 }
+
+//การได้รับโล่ป้องกัน
+void Unit::addProtect(){
+  if(level == 0) Protect++;
+  if(level == 2) Protect++;
+  if(level == 4) Protect++;
+  if(level == 6) Protect++;
+  if(level == 8) Protect++;
+  if(level == 10) Protect++;
+  if(level == 12) Protect++;
+  if(level == 13) Protect++;
+  if(level == 15) Protect++;
+  if(level == 17) Protect++;
+  if(level == 18) Protect++;
+}
+
+//random ตัวเลขในช่วง
+void Unit::random(){
+  if( (level == 0) or (level == 1) or (level == 3) or (level == 4) or (level == 6) or (level == 7) or (level == 9) or (level == 10) or (level == 12) or (level == 13) or (level == 15) or (level == 16) ) randNum = rand()%8;
+  if( (level == 2) or (level == 5) or (level == 8) or (level == 11) or (level == 14) or (level == 17)) randNum = rand()%8;
+}
+
+
 
 void Unit::STARTGAME(){
   string tier[6] = {"A1","A2","B1","B2","C1","C2"};
+
   Protect = false;
   char ArkProtect;
-  while(level <= 15){
+  while(level <= 18){
     if(tries <= 0) break;
-
-    if(level == 0) Protect = true;
-    if(level == 3) Protect = true;
-    if(level == 6) Protect = true;
-    if(level == 9) Protect = true;
-    if(level == 12) Protect = true;
-    if(level == 15) Protect = true;
-
-    randNum = rand()%20;
+    SWITCHK();
+    addProtect();
+    random();
     wordforguess = wordlist[randNum+k];
     hint1forguess = hint1list[randNum+k];
     hint2forguess = hint2list[randNum+k];
@@ -274,10 +298,11 @@ void Unit::STARTGAME(){
     string MysteryWord(wordforguess.length(),'_');
     while(tries >= 0){
       if(true){
-        cout << level << " " << Hint;
-        cout << endl << wordforguess << endl;
-        SWITCHK();
+
+        // cout << endl << level << " " << Hint;
+        // cout << endl << wordforguess << endl;
         updatehangmanlevel();
+
         if(tries == 0) break;
         CorrectGuess = false;
 
@@ -287,6 +312,7 @@ void Unit::STARTGAME(){
         cout<<"The word you have to guess is : "<<"\n\n";
         cout<<MysteryWord<< endl;
 
+        //show hint
         cout << "\nmeaning: "<<hint1forguess <<endl;
         if(Hint >= 2) cout << "         "<<hint2forguess <<endl;
 
@@ -314,11 +340,12 @@ void Unit::STARTGAME(){
           tries--;
           cout<<"Sorry, :> "<<Guess<<" <: is not part of the word" << endl;
           Sleep(1000);
-          if(Protect){
+          //ถามว่าป้องกันมั้ย
+          if(Protect > 0){
             cout << "You went use Protect?(y/n) : " ;
             cin >> ArkProtect ;
             if(ArkProtect == 'y'){
-              Protect = false;
+              Protect--;
               tries++;
             }
           }
@@ -353,8 +380,5 @@ void Unit::STARTGAME(){
       }
     }
   }
-  //แสดงคะแนน
-}
-
-void Unit::test(){
+  //ใส่ตอนจบ
 }
