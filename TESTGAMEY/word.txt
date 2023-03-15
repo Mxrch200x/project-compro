@@ -17,7 +17,7 @@ onion
 theatre
 sciencetist
 november
-museaum
+museum
 journey
 A2
 accident
@@ -53,7 +53,7 @@ horror
 knock
 magic
 market
-nieghbourhood
+neighbourhood
 path
 poison
 robot
@@ -108,7 +108,7 @@ misfortune
 maiden
 smite
 fortune
-hermit 
+hermit
 paradox
 introvert
 pandemic
