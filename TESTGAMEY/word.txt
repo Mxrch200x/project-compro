@@ -89,7 +89,7 @@ battlefield
 endeavor
 horizon
 funeral
-graveyard (the place for dead person)
+graveyard
 hazard
 kidnap
 landlord
