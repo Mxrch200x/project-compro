@@ -258,7 +258,7 @@ void Unit::ReadWord(){
   source.close();
 }
 
-//
+//แสดงประวัติของผู้เล่นโดยแสดงชื่อและคะแนน(เรียงจากคนที่เล่นเป็นคนแรกไปยังล่าสุด)
 void Unit::Readhistory(){
   int i=1 ;
   ofstream dest(history,ios::app);
