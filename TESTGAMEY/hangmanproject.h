@@ -101,7 +101,7 @@ void Unit::welcome(){
 void Unit::updatehangmanlevel(){
   if(level == 18){
       cout<<"\n**************************************************"<<endl;
-      cout<<"                   WIN!!"<<endl;
+      cout<<"                       WIN!!"<<endl;
       cout<<"**************************************************"<<endl;
       cout<<"\n--------------------------------------------------"<<endl;     //15x50
       cout<<"l                      __}__                      "<<endl;
