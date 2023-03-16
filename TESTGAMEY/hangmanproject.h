@@ -212,6 +212,24 @@ void Unit::updatehangmanlevel(){
       cout<<"l                                                 "<<endl;
       cout<<"l                                                 "<<endl;
       cout<<"__________________________________________________"<<endl;
+    }else{
+      cout<<"\n**************************************************"<<endl;
+      cout<<"                   GAME OVER!!"<<endl;
+      cout<<"**************************************************"<<endl;
+      cout<<"\n--------------------------------------------------"<<endl;     //15x50
+      cout<<"l                      __}__                      "<<endl;
+      cout<<"l                      l_l_l__                    "<<endl;
+      cout<<"l                     ( *.* )                     "<<endl;
+      cout<<"l                       _l_                       "<<endl;
+      cout<<"l                     /  l  \\                    "<<endl;
+      cout<<"l       You          /   l   \\       Win!       "<<endl;
+      cout<<"l                        l                        "<<endl;
+      cout<<"l                       / \\                      "<<endl;
+      cout<<"l                      /   \\                     "<<endl;
+      cout<<"l                    _/     \\_                   "<<endl;
+      cout<<"l                                                 "<<endl;
+      cout<<"l                                                 "<<endl;
+      cout<<"__________________________________________________"<<endl;
     }
 }
 
@@ -244,14 +262,14 @@ void Unit::ReadWord(){
 void Unit::Readhistory(){
   int i=1 ;
   ofstream dest(history,ios::app);
-  dest << name <<setw(20)<< score << endl;
+  dest << setw(15) << name << setw(20) << score << endl;
   dest.close();
   source.open(history);
   cout << "-----------------leaderboard------------------\n";
-  cout << setw(10)<<"name" << setw(25) <<"score\n";
+  cout << setw(21)<<"name" << setw(21) <<"score\n";
   while(getline(source,textline))
   {
-    cout <<setw(5)<< i<<"." <<textline <<"\n";
+    cout <<setw(5)<< i<< "." << textline <<"\n";
     i++;
   }
   cout <<"-----------------------------------------------";
@@ -296,18 +314,18 @@ void Unit::addProtect(){
 
 //random ตัวเลขในช่วง
 void Unit::random(){
-  if( (level == 0) or (level == 1) or (level == 3) or (level == 4) or (level == 6) or (level == 7) or (level == 9) or (level == 10) or (level == 12) or (level == 13) or (level == 15) or (level == 16) ) randNum = rand()%8;
+  if( (level == 0) or (level == 1) or (level == 3) or (level == 4) or (level == 6) or (level == 7) or (level == 9) or (level == 10) or (level == 12) or (level == 13) or (level == 15) or (level == 16) ) randNum = rand()%7;
   if( (level == 2) or (level == 5) or (level == 8) or (level == 11) or (level == 14) or (level == 17)) randNum = rand()%6;
 }
 
 
 
 void Unit::STARTGAME(){
-  string tier[6] = {"A1","A2","B1","B2","C1","C2"};
+  string tier[7] = {"A1","A2","B1","B2","C1","C2"};
 
   Protect = false;
   char ArkProtect;
-  while(level <= 18){
+  while(level < 18){
     if(tries <= 0) break;
     SWITCHK();
     addProtect();
@@ -320,8 +338,8 @@ void Unit::STARTGAME(){
     while(tries >= 0){
       if(true){
 
-        // cout << endl << level << " " << Hint;
-        // cout << endl << wordforguess << endl;
+        cout << endl << level << " " << Hint;
+        cout << endl << wordforguess << endl;
         updatehangmanlevel();
 
         if(tries == 0) break;
@@ -392,7 +410,7 @@ void Unit::STARTGAME(){
           cout<<"______________________________________________________________________"<<endl<<endl;
           cout<<"______________________________________________________________________"<<endl<<endl;
           level++;
-          Sleep(2000);
+          // Sleep(2000);
           system("CLS");
           break;
         }
@@ -402,5 +420,6 @@ void Unit::STARTGAME(){
     }
   }
   //ใส่ตอนจบ
+  if(level == 18) updatehangmanlevel();
   Readhistory();
 }
