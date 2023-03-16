@@ -101,7 +101,7 @@ void Unit::welcome(){
 void Unit::updatehangmanlevel(){
   if(level == 18){
       cout<<"\n**************************************************"<<endl;
-      cout<<"                       WIN!!"<<endl;
+      cout<<"                   WIN!!"<<endl;
       cout<<"**************************************************"<<endl;
       cout<<"\n--------------------------------------------------"<<endl;     //15x50
       cout<<"l                      __}__                      "<<endl;
@@ -301,15 +301,11 @@ void Unit::SWITCHK(){
 //การได้รับโล่ป้องกัน
 void Unit::addProtect(){
   if(level == 0) Protect++;
-  if(level == 2) Protect++;
-  if(level == 4) Protect++;
+  if(level == 3) Protect++;
   if(level == 6) Protect++;
-  if(level == 8) Protect++;
-  if(level == 10) Protect++;
+  if(level == 9) Protect++;
   if(level == 12) Protect++;
-  if(level == 13) Protect++;
   if(level == 15) Protect++;
-  if(level == 17) Protect++;
 }
 
 //random ตัวเลขในช่วง
