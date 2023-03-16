@@ -3,7 +3,7 @@
 #include <fstream>
 #include <ctime>
 #include <windows.h>
-#include <vector>
+// #include <vector>
 
 using namespace std;
 
@@ -17,6 +17,7 @@ class Unit{
     string wordfile;
     string hint1file;
     string hint2file;
+    string history;
     string textline;
     string wordlist[126] = {};
     string hint1list[126] = {};
@@ -31,7 +32,7 @@ class Unit{
     int Protect;
     int Hint;
   public:
-    Unit(string ,string ,string ,string );
+    Unit(string ,string ,string ,string , string);
     void welcome();
     void updatehangmanlevel();
     void ReadWord();
@@ -39,13 +40,15 @@ class Unit{
     void STARTGAME();
     void addProtect();
     void random();
+    void Readhistory();
 };
 
-Unit::Unit(string n ,string filename ,string hint1 ,string hint2){
+Unit::Unit(string n ,string filename ,string hint1 ,string hint2 ,string filehistory){
   name = n;
   wordfile = filename;
   hint1file = hint1;
   hint2file = hint2;
+  history = filehistory;
   type = "START";
   tries = 6;
   CorrectGuess = false;
@@ -236,6 +239,13 @@ void Unit::ReadWord(){
   source.close();
 }
 
+//
+void Unit::Readhistory(){
+  ofstream dest(history,ios::app);
+  dest << name << "\t\t" << score << endl;
+  dest.close();
+}
+
 //ช่วงการสุ่มคำ
 void Unit::SWITCHK(){
   if(level == 0) k = 1;
@@ -270,13 +280,12 @@ void Unit::addProtect(){
   if(level == 13) Protect++;
   if(level == 15) Protect++;
   if(level == 17) Protect++;
-  if(level == 18) Protect++;
 }
 
 //random ตัวเลขในช่วง
 void Unit::random(){
   if( (level == 0) or (level == 1) or (level == 3) or (level == 4) or (level == 6) or (level == 7) or (level == 9) or (level == 10) or (level == 12) or (level == 13) or (level == 15) or (level == 16) ) randNum = rand()%8;
-  if( (level == 2) or (level == 5) or (level == 8) or (level == 11) or (level == 14) or (level == 17)) randNum = rand()%8;
+  if( (level == 2) or (level == 5) or (level == 8) or (level == 11) or (level == 14) or (level == 17)) randNum = rand()%6;
 }
 
 
@@ -342,7 +351,7 @@ void Unit::STARTGAME(){
           Sleep(1000);
           //ถามว่าป้องกันมั้ย
           if(Protect > 0){
-            cout << "You went use Protect?(y/n) : " ;
+            cout << "You want use Protect?(y/n) : " ;
             cin >> ArkProtect ;
             if(ArkProtect == 'y'){
               Protect--;
@@ -381,4 +390,5 @@ void Unit::STARTGAME(){
     }
   }
   //ใส่ตอนจบ
+  Readhistory();
 }
