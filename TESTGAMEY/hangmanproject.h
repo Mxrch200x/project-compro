@@ -265,7 +265,7 @@ void Unit::Readhistory(){
   dest << setw(15) << name << setw(20) << score << endl;
   dest.close();
   source.open(history);
-  cout << "-----------------leaderboard------------------\n";
+  cout << "-----------------Playerboard------------------\n";
   cout << setw(21)<<"name" << setw(21) <<"score\n";
   while(getline(source,textline))
   {
