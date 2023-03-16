@@ -3,6 +3,7 @@
 #include <fstream>
 #include <ctime>
 #include <windows.h>
+#include <iomanip> 
 // #include <vector>
 
 using namespace std;
@@ -241,9 +242,20 @@ void Unit::ReadWord(){
 
 //
 void Unit::Readhistory(){
+  int i=1 ;
   ofstream dest(history,ios::app);
-  dest << name << "\t\t" << score << endl;
+  dest << name <<setw(20)<< score << endl;
   dest.close();
+  source.open(history);
+  cout << "-----------------leaderboard------------------\n";
+  cout << setw(10)<<"name" << setw(25) <<"score\n";
+  while(getline(source,textline))
+  {
+    cout <<setw(5)<< i<<"." <<textline <<"\n";
+    i++;
+  }
+  cout <<"-----------------------------------------------";
+  source.close();
 }
 
 //ช่วงการสุ่มคำ
