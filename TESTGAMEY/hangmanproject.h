@@ -99,7 +99,25 @@ void Unit::welcome(){
 
 //อัพเดทตัว hangman
 void Unit::updatehangmanlevel(){
-  if(tries==6){
+  if(level == 18){
+      cout<<"\n**************************************************"<<endl;
+      cout<<"                   WIN!!"<<endl;
+      cout<<"**************************************************"<<endl;
+      cout<<"\n--------------------------------------------------"<<endl;     //15x50
+      cout<<"l                      __}__                      "<<endl;
+      cout<<"l                      l_l_l__                    "<<endl;
+      cout<<"l                     ( *.* )                     "<<endl;
+      cout<<"l                       _l_                       "<<endl;
+      cout<<"l                     /  l  \\                    "<<endl;
+      cout<<"l       You          /   l   \\       WIN!       "<<endl;
+      cout<<"l                        l                        "<<endl;
+      cout<<"l                       / \\                      "<<endl;
+      cout<<"l                      /   \\                     "<<endl;
+      cout<<"l                    _/     \\_                   "<<endl;
+      cout<<"l                                                 "<<endl;
+      cout<<"l                                                 "<<endl;
+      cout<<"__________________________________________________"<<endl;
+  }else if(tries==6){
       cout<<"\n--------------------------------------------------"<<endl;     //15x50
       cout<<"l                                                 "<< "\t\tScore = " << score << endl;
       cout<<"l                                                 "<< "\t\tProtect = " << Protect << endl;
@@ -205,24 +223,6 @@ void Unit::updatehangmanlevel(){
       cout<<"l                       _l_                       "<<endl;
       cout<<"l                     /  l  \\                    "<<endl;
       cout<<"l       You          /   l   \\       Dead!       "<<endl;
-      cout<<"l                        l                        "<<endl;
-      cout<<"l                       / \\                      "<<endl;
-      cout<<"l                      /   \\                     "<<endl;
-      cout<<"l                    _/     \\_                   "<<endl;
-      cout<<"l                                                 "<<endl;
-      cout<<"l                                                 "<<endl;
-      cout<<"__________________________________________________"<<endl;
-    }else{
-      cout<<"\n**************************************************"<<endl;
-      cout<<"                   GAME OVER!!"<<endl;
-      cout<<"**************************************************"<<endl;
-      cout<<"\n--------------------------------------------------"<<endl;     //15x50
-      cout<<"l                      __}__                      "<<endl;
-      cout<<"l                      l_l_l__                    "<<endl;
-      cout<<"l                     ( *.* )                     "<<endl;
-      cout<<"l                       _l_                       "<<endl;
-      cout<<"l                     /  l  \\                    "<<endl;
-      cout<<"l       You          /   l   \\       Win!       "<<endl;
       cout<<"l                        l                        "<<endl;
       cout<<"l                       / \\                      "<<endl;
       cout<<"l                      /   \\                     "<<endl;
