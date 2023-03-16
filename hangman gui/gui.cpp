@@ -5,7 +5,7 @@ LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM);
 #define start_button 2
 
 void AddControls(HWND);
-void loadImage() ;
+void loadImages() ;
 
 HWND hLogo ;
 HMENU hMenu ;
@@ -14,16 +14,19 @@ HBITMAP hLogoImage ;
 int WINAPI WinMain(HINSTANCE hInst , HINSTANCE hPrevInst , LPSTR args , int ncmdshow){
     WNDCLASSW wc = {0};
 
-    wc.hbrBackground = (HBRUSH)COLOR_WINDOW ;
+    wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1) ; //background color
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);
     wc.hInstance = hInst ;
-    wc.lpszClassName = L"WindowClass";
+    wc.lpszClassName = L"WindowClass", L"WindowStart"; //window classes
+
     wc.lpfnWndProc = WindowProcedure ;
 
+    //close program
     if(!RegisterClassW(&wc))
     return -1 ;
 
-    CreateWindowW(L"WindowClass", L"HANG_MAN", WS_OVERLAPPEDWINDOW | WS_VISIBLE , 100 ,100, 500, 500,
+    //Parent window
+    CreateWindowW(L"WindowClass", L"HANG_MAN", WS_SYSMENU |WS_MINIMIZEBOX | WS_VISIBLE , 100 ,100, 500, 500,
                   NULL, NULL, NULL, NULL);
 
     MSG msg = {0};
@@ -38,15 +41,16 @@ int WINAPI WinMain(HINSTANCE hInst , HINSTANCE hPrevInst , LPSTR args , int ncmd
 LRESULT CALLBACK WindowProcedure(HWND hWnd,UINT msg, WPARAM wp, LPARAM lp ){
     switch (msg){
     case WM_COMMAND:
-    if (LOWORD(wp) == start_button){
-        
-    }
+    //start button_Action
+    if(LOWORD(wp) == start_button){}
+    
+    //Exit button_Action
     if(LOWORD(wp)== exit_button){
-DestroyWindow(hWnd);
+        DestroyWindow(hWnd);
     }
     
     case WM_CREATE:
-        loadImage();
+        loadImages();
         AddControls(hWnd);
         break ;
     case WM_DESTROY:
@@ -58,19 +62,20 @@ DestroyWindow(hWnd);
 }
 
 void AddControls(HWND hWnd){
-    hLogo = CreateWindowW(L"static",NULL,WS_VISIBLE | WS_CHILD | SS_CENTER |
-     SS_BITMAP , 200, 100,100, 50,hWnd, NULL, NULL, NULL);
 
-    SendMessageW(hLogo, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM) hLogoImage);
+    hLogo = CreateWindowW(L"Static", NULL, WS_VISIBLE | WS_CHILD | SS_BITMAP , 0, 0, 100, 100, hWnd, NULL, NULL, NULL);
+    SendMessageW(hLogo, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM) hLogoImage); //create window
 
-    CreateWindowW(L"Button",L"Start", WS_VISIBLE | WS_CHILD | WS_BORDER , 200, 204, 100, 50, hWnd,
-                  (HMENU)start_button,NULL,NULL);
 
-    CreateWindowW(L"Button",L"Exit", WS_VISIBLE | WS_CHILD | WS_BORDER , 200, 300, 100, 50, hWnd,
-                  (HMENU)exit_button,NULL,NULL);
+    CreateWindowW(L"Button",L"Start", WS_VISIBLE | WS_CHILD | WS_BORDER , 200, 270, 100, 50, hWnd,
+                  (HMENU)start_button,NULL,NULL); //create start button
+
+    CreateWindowW(L"Button",L"Exit", WS_VISIBLE | WS_CHILD | WS_BORDER , 200, 350, 100, 50, hWnd,
+                  (HMENU)exit_button,NULL,NULL); //create exit button
 
 }
 
-void loadImage(){
-    hLogoImage = (HBITMAP)LoadImageW(NULL, L"gui\\picture\\logo.bmp",IMAGE_BITMAP, 0,0,LR_LOADFROMFILE);
+// import logo
+void loadImages(){
+    hLogoImage = (HBITMAP)LoadImageW(NULL, L"logo.bmp", IMAGE_BITMAP, 500, 250, LR_LOADFROMFILE);
 }
