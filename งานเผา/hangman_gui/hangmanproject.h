@@ -101,7 +101,7 @@ void Unit::welcome(){
 void Unit::updatehangmanlevel(){
   if(level == 18){
       cout<<"\n**************************************************"<<endl;
-      cout<<"                   WIN!!"<<endl;
+      cout<<"                       WIN!!"<<endl;
       cout<<"**************************************************"<<endl;
       cout<<"\n--------------------------------------------------"<<endl;     //15x50
       cout<<"l                      __}__                      "<<endl;
@@ -407,7 +407,7 @@ void Unit::STARTGAME(){
           cout<<"______________________________________________________________________"<<endl<<endl;
           cout<<"______________________________________________________________________"<<endl<<endl;
           level++;
-          // Sleep(2000);
+          Sleep(2000);
           system("CLS");
           break;
         }
@@ -417,7 +417,7 @@ void Unit::STARTGAME(){
     }
   }
   //ใส่ตอนจบ
-  if(tries < 0) updatehangmanlevel();
+  if(level == 18) updatehangmanlevel();
   Readhistory();
   Sleep(15000);
 }
